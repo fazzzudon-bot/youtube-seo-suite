@@ -23,7 +23,8 @@ async function youtubeAPICall(endpoint: string, params: YouTubeAPIParams) {
   try {
     const response = await fetch(url);
     if (!response.ok) {
-      throw new Error(`YouTube API error: ${response.statusText}`);
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(`YouTube API error: ${response.statusText} - ${JSON.stringify(errorData)}`);
     }
     return await response.json();
   } catch (error) {
@@ -176,19 +177,55 @@ export function extractVideoId(url: string): string | null {
   return null;
 }
 
-export function extractChannelId(url: string): string | null {
+export async function extractChannelId(url: string): Promise<string | null> {
+  // Direct channel ID (UC...)
+  if (/^UC[a-zA-Z0-9_-]{22}$/.test(url)) {
+    return url;
+  }
+
+  // Extract from various URL formats
   const patterns = [
     /youtube\.com\/channel\/([^\/\n?#]+)/,
     /youtube\.com\/c\/([^\/\n?#]+)/,
     /youtube\.com\/@([^\/\n?#]+)/,
-    /^UC[a-zA-Z0-9_-]{22}$/
   ];
 
   for (const pattern of patterns) {
     const match = url.match(pattern);
-    if (match) return match[1];
+    if (match) {
+      const identifier = match[1];
+      
+      // If it's already a UC ID, return it
+      if (/^UC[a-zA-Z0-9_-]{22}$/.test(identifier)) {
+        return identifier;
+      }
+      
+      // For @username or custom URLs, we need to search for the channel
+      try {
+        const searchResult = await searchChannels(identifier, 1);
+        if (searchResult.items && searchResult.items.length > 0) {
+          return searchResult.items[0].id.channelId || searchResult.items[0].snippet.channelId;
+        }
+      } catch (error) {
+        console.error('Error searching for channel:', error);
+      }
+    }
   }
 
+  return null;
+}
+
+export async function getChannelIdByHandle(handle: string) {
+  try {
+    const cleanHandle = handle.replace('@', '');
+    const searchResult = await searchChannels(cleanHandle, 1);
+    
+    if (searchResult.items && searchResult.items.length > 0) {
+      return searchResult.items[0].id.channelId;
+    }
+  } catch (error) {
+    console.error('Error getting channel ID by handle:', error);
+  }
   return null;
 }
 
