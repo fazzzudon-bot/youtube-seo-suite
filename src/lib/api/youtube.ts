@@ -89,18 +89,80 @@ export async function getChannelVideos(channelId: string, maxResults: number = 5
 }
 
 export async function getTrendingVideos(regionCode: string = 'US', categoryId?: string) {
+  // Use more specific search queries for better regional filtering
+  const trendingQuery = categoryId 
+    ? getCategoryTrendingQuery(categoryId, regionCode)
+    : 'trending today popular viral';
+  
   const params: YouTubeAPIParams = {
-    part: 'snippet,statistics',
-    chart: 'mostPopular',
+    part: 'snippet',
+    q: trendingQuery,
+    type: 'video',
+    order: 'viewCount',
+    publishedAfter: getRecentDate(7), // Last 7 days
     regionCode: regionCode,
-    maxResults: '50'
+    maxResults: '50',
+    relevanceLanguage: regionCode === 'US' ? 'en' : undefined,
+    safeSearch: 'moderate'
   };
 
-  if (categoryId) {
-    params.videoCategoryId = categoryId;
+  const searchResults = await youtubeAPICall('search', params);
+  
+  // Get detailed statistics for the videos
+  if (searchResults.items && searchResults.items.length > 0) {
+    const videoIds = searchResults.items.map((item: any) => item.id.videoId).join(',');
+    const videoDetails = await youtubeAPICall('videos', {
+      part: 'snippet,statistics',
+      id: videoIds
+    });
+    
+    // Filter out non-English content for US region
+    if (regionCode === 'US' && videoDetails.items) {
+      videoDetails.items = videoDetails.items.filter((video: any) => {
+        const title = video.snippet.title.toLowerCase();
+        const defaultLanguage = video.snippet.defaultLanguage || video.snippet.defaultAudioLanguage || 'en';
+        
+        // Filter out non-English content (basic check for common non-English characters)
+        const hasNonLatinChars = /[\u0900-\u097F\u0980-\u09FF\u0A00-\u0A7F\u4E00-\u9FFF\u3040-\u309F\u30A0-\u30FF]/.test(title);
+        
+        return !hasNonLatinChars && defaultLanguage.startsWith('en');
+      });
+    }
+    
+    return videoDetails;
   }
+  
+  return searchResults;
+}
 
-  return youtubeAPICall('videos', params);
+function getCategoryTrendingQuery(categoryId: string, regionCode: string = 'US'): string {
+  // Add region-specific terms to improve filtering
+  const regionPrefix = regionCode === 'US' ? 'USA ' : '';
+  
+  const categoryQueries: Record<string, string> = {
+    'Technology': `${regionPrefix}tech news AI gadgets latest technology`,
+    'Gaming': `${regionPrefix}gaming news esports trending`,
+    'Music': `${regionPrefix}new music releases trending songs`,
+    'Entertainment': `${regionPrefix}entertainment news celebrity trending`,
+    'Sports': `${regionPrefix}sports highlights NBA NFL trending`,
+    'Education': `${regionPrefix}educational tutorial learning trending`,
+    'Science': `${regionPrefix}science news discovery space technology`,
+    'News': `${regionPrefix}breaking news latest updates today`,
+    'Comedy': `${regionPrefix}funny comedy viral trending`,
+    'Film': `${regionPrefix}movie trailer new releases cinema`,
+    'Autos': `${regionPrefix}cars automotive review technology`,
+    'Travel': `${regionPrefix}travel vlog destinations guide`,
+    'Pets': `${regionPrefix}pets animals funny cute viral`,
+    'Howto': `${regionPrefix}how to tutorial DIY guide`
+  };
+  
+  return categoryQueries[categoryId] || `${regionPrefix}trending today popular viral`;
+}
+
+function getRecentDate(daysAgo: number): string {
+  const date = new Date();
+  date.setDate(date.getDate() - daysAgo);
+  return date.toISOString();
 }
 
 export async function searchChannels(query: string, maxResults: number = 10) {
