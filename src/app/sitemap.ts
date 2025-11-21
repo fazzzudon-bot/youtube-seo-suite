@@ -7,19 +7,20 @@ import { MetadataRoute } from 'next';
 
 // Blog articles metadata
 const blogArticles = [
+  { slug: 'youtube-seo-checklist-2024', date: '2024-01-18' },
   { slug: 'youtube-seo-guide-2024', date: '2024-01-15' },
   { slug: 'youtube-algorithm-explained', date: '2024-01-12' },
   { slug: 'viral-video-title-formulas', date: '2024-01-10' },
   { slug: 'youtube-tags-best-practices', date: '2024-01-08' },
   { slug: 'grow-youtube-channel-fast', date: '2024-01-05' },
-  { slug: 'youtube-thumbnail-design', date: '2024-01-03' },
+  { slug: 'best-youtube-thumbnail-size', date: '2024-01-03' },
   { slug: 'keyword-research-youtube', date: '2024-01-01' },
   { slug: 'youtube-analytics-guide', date: '2023-12-28' },
-  { slug: 'youtube-seo-checklist-2024', date: '2024-01-18' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://youtubeseo.app';
+  // Use environment variable or fallback
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://your-domain.com';
   const currentDate = new Date().toISOString();
 
   // Main pages
