@@ -29,12 +29,8 @@ const faqs = [
     answer: "Our keyword difficulty scores are powered by advanced AI analysis combined with real YouTube search data. We analyze competition levels, search volume patterns, and ranking factors to provide you with accurate difficulty estimates. While no tool is 100% perfect, our AI continuously learns and improves its predictions."
   },
   {
-    question: "Can I analyze my competitors' channels?",
-    answer: "Absolutely! Our Channel Analyzer tool lets you analyze any YouTube channel to discover their content strategy, top-performing videos, keyword opportunities, and areas where you can compete effectively. Simply enter the channel URL and get detailed insights instantly."
-  },
-  {
     question: "How often should I use these SEO tools?",
-    answer: "For best results, use keyword research before creating each video to find high-opportunity topics. Generate optimized titles, tags, and descriptions for every upload. Analyze your videos and competitors weekly to stay ahead of trends and continuously improve your strategy."
+    answer: "For best results, use keyword research before creating each video to find high-opportunity topics. Generate optimized titles, tags, and descriptions for every upload. Check trending topics regularly to stay ahead of trends and continuously improve your content strategy."
   },
   {
     question: "What makes this tool better than alternatives like vidIQ or TubeBuddy?",

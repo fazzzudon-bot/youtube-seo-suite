@@ -7,8 +7,6 @@ import {
   Tag,
   FileText,
   Heading,
-  BarChart3,
-  Video,
   TrendingUp,
   Lightbulb,
   ArrowRight,
@@ -22,12 +20,13 @@ import {
   Clock,
   Shield,
   Sparkles,
+  Video,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { WebsiteStructuredData, OrganizationStructuredData, FAQStructuredData } from "@/components/structured-data"
+import { WebsiteStructuredData, OrganizationStructuredData, FAQStructuredData, BreadcrumbStructuredData, SoftwareAppStructuredData } from "@/components/structured-data"
 import { FAQSection } from "@/components/faq-section"
 
 const tools = [
@@ -58,20 +57,6 @@ const tools = [
     icon: FileText,
     href: "/description-generator",
     color: "bg-orange-500/10 text-orange-500",
-  },
-  {
-    title: "Channel Analyzer",
-    description: "Analyze any channel without login - find opportunities and weaknesses",
-    icon: BarChart3,
-    href: "/channel-analyzer",
-    color: "bg-pink-500/10 text-pink-500",
-  },
-  {
-    title: "Video Analyzer",
-    description: "Improve SEO & CTR instantly with detailed video analysis",
-    icon: Video,
-    href: "/video-analyzer",
-    color: "bg-red-500/10 text-red-500",
   },
   {
     title: "Trending Topics",
@@ -198,24 +183,42 @@ export default function Home() {
     <>
       <WebsiteStructuredData />
       <OrganizationStructuredData />
+      <SoftwareAppStructuredData 
+        name="YouTube SEO Tool"
+        description="Free AI-powered YouTube SEO tool with keyword research, tag generator, trending topics, and video ideas to help creators rank faster and grow their channels."
+        url="https://youtubeseo.app"
+      />
+      <BreadcrumbStructuredData 
+        items={[
+          { name: "Home", url: "https://youtubeseo.app" }
+        ]}
+      />
       <FAQStructuredData 
         faqs={[
           {
             question: "What is YouTube SEO?",
-            answer: "YouTube SEO is the process of optimizing your videos, channel, and playlists to rank higher in YouTube's search results. It involves keyword research, optimizing titles, descriptions, tags, and improving engagement metrics."
+            answer: "YouTube SEO is the process of optimizing your videos, channel, and playlists to rank higher in YouTube's search results. It involves keyword research, optimizing titles, descriptions, tags, and improving engagement metrics to help your content reach more viewers organically."
           },
           {
             question: "How does this YouTube SEO tool help?",
-            answer: "Our AI-powered tool helps you find the best keywords, generate optimized tags, create viral titles, write SEO-friendly descriptions, and analyze your competition - all for free."
+            answer: "Our AI-powered tool helps you find the best keywords, generate optimized tags, create viral titles, write SEO-friendly descriptions, discover trending topics, get video ideas, and analyze your competition - all for free. We provide data-driven insights using Gemini AI to maximize your video's ranking potential."
           },
           {
             question: "Is this tool really free?",
-            answer: "Yes! All our core features are 100% free. No credit card required, no hidden fees. We believe in helping creators grow their channels."
+            answer: "Yes! All our core features including keyword research, tag generator, title generator, description generator, trending topics finder, and video ideas are 100% free. No credit card required, no hidden fees. We believe in helping creators grow their channels."
           },
           {
             question: "Do I need to login to use the tools?",
-            answer: "No login required! You can use all our tools immediately without creating an account. Simply visit any tool page and start optimizing."
+            answer: "No login required! You can use all our tools immediately without creating an account. Simply visit any tool page like keyword research, tag generator, or trending topics and start optimizing."
           },
+          {
+            question: "How accurate is the keyword research tool?",
+            answer: "Our keyword research tool uses advanced AI (Gemini) combined with real YouTube data to provide accurate keyword difficulty scores, search volume estimates, and competition analysis. We continuously improve our algorithms to give you the most reliable insights for ranking your videos."
+          },
+          {
+            question: "What makes this better than vidIQ or TubeBuddy?",
+            answer: "Unlike vidIQ and TubeBuddy, our YouTube SEO tool is completely free with no premium upsells, requires no account creation or login, uses cutting-edge Gemini AI for more accurate predictions, and focuses on essential SEO features that actually help you rank faster without overwhelming complexity."
+          }
         ]}
       />
       <div className="flex min-h-screen flex-col">
@@ -234,29 +237,25 @@ export default function Home() {
             >
               <Badge className="mb-6 px-4 py-2 text-sm font-medium shadow-lg" variant="secondary">
                 <Sparkles className="mr-2 h-4 w-4" />
-                Free YouTube SEO Tool - No Login Required
+                Free YouTube SEO Tool - Try It Free, No Login Required
               </Badge>
               <h1 className="mb-6 sm:mb-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight px-2">
-                Grow Your YouTube Channel
-                <br />
-                <span className="bg-gradient-to-r from-primary via-primary to-primary/60 bg-clip-text text-transparent">
-                  With AI-Powered SEO Tools
-                </span>
+                Free YouTube SEO Tool: Keyword Research, Tag Generator & Video Ideas
               </h1>
               <p className="mx-auto mb-8 sm:mb-10 max-w-3xl text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground px-4 leading-relaxed">
-                Everything you need to rank higher on YouTube. Free keyword research, tag generator, 
-                title optimizer, and comprehensive analytics. Built by creators, for creators.
+                Try it free! AI-powered YouTube SEO tool with keyword research, tag generator, trending topics finder, and video ideas. 
+                Rank faster with our free title optimizer, description generator, and channel analyzer. The best vidIQ alternative for 2024.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4 mb-12">
                 <Button size="lg" asChild className="w-full sm:w-auto text-base px-8 py-6 shadow-lg hover:shadow-xl transition-all">
                   <Link href="/keyword-research">
-                    Get Started Free
+                    Try Keyword Research Free
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild className="w-full sm:w-auto text-base px-8 py-6">
                   <Link href="#tools">
-                    View All Tools
+                    View All Free Tools
                   </Link>
                 </Button>
               </div>
@@ -309,14 +308,14 @@ export default function Home() {
             <div className="mb-12 sm:mb-16 text-center">
               <Badge className="mb-4" variant="outline">
                 <Trophy className="mr-2 h-3 w-3" />
-                Why Choose Us
+                Why Choose Our YouTube SEO Tool
               </Badge>
               <h2 className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
-                The Best vidIQ Alternative
+                The Best Free vidIQ Alternative for YouTube Growth
               </h2>
               <p className="mx-auto max-w-3xl text-base sm:text-lg md:text-xl text-muted-foreground px-4 leading-relaxed">
-                Powerful AI-driven insights combined with comprehensive analytics. 
-                Everything you need to grow your YouTube channel, completely free.
+                Powerful AI-driven keyword research, tag generator, and trending topics insights combined with comprehensive video analytics. 
+                Everything you need to rank your YouTube videos faster and grow your channel organically - completely free, no login required.
               </p>
             </div>
             <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -351,14 +350,14 @@ export default function Home() {
             <div className="mb-12 sm:mb-16 text-center">
               <Badge className="mb-4" variant="outline">
                 <Zap className="mr-2 h-3 w-3" />
-                All-in-One Solution
+                All-in-One YouTube SEO Solution
               </Badge>
               <h2 className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
-                Complete YouTube SEO Toolkit
+                Complete Free YouTube SEO Toolkit: Try All Tools Free
               </h2>
               <p className="mx-auto max-w-3xl text-base sm:text-lg md:text-xl text-muted-foreground px-4 leading-relaxed">
-                From keyword research to video analytics, we've got every tool you need 
-                to optimize your content and dominate YouTube search results.
+                From keyword research and tag generator to trending topics and video ideas, we've got every free tool you need 
+                to optimize your YouTube content and dominate search rankings. No credit card, no login - just try it free now.
               </p>
             </div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -381,7 +380,7 @@ export default function Home() {
                       </CardHeader>
                       <CardContent>
                         <div className="flex items-center text-sm font-semibold text-primary group-hover:underline">
-                          Try it free
+                          Try it free now
                           <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-2" />
                         </div>
                       </CardContent>
@@ -393,20 +392,80 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Additional Content Section for SEO */}
+        <section className="border-t px-4 sm:px-6 py-16 sm:py-20 md:py-24 bg-muted/30">
+          <div className="container mx-auto max-w-7xl">
+            <div className="mx-auto max-w-4xl">
+              <h2 className="mb-8 text-3xl sm:text-4xl font-bold tracking-tight text-center">
+                How Our Free YouTube SEO Tool Helps You Rank Videos Faster
+              </h2>
+              
+              <div className="prose prose-lg dark:prose-invert max-w-none space-y-6 text-muted-foreground">
+                <h3 className="text-2xl font-semibold text-foreground">Advanced Keyword Research for YouTube Success</h3>
+                <p>
+                  Our free keyword research tool uses AI-powered analysis to help you discover high-ranking YouTube keywords with accurate difficulty scores and search volume data. 
+                  Unlike basic keyword tools, we provide comprehensive insights into trending topics, video ideas, and competitor strategies to help you create content that ranks faster.
+                </p>
+
+                <h3 className="text-2xl font-semibold text-foreground mt-8">Free Tag Generator: Optimize Every Video</h3>
+                <p>
+                  The tag generator creates 30-50 optimized tags for your YouTube videos, including short tags, long-tail keywords, and LSI (Latent Semantic Indexing) variations. 
+                  Try it free to instantly boost your video's discoverability and ranking potential in YouTube search results and suggested videos.
+                </p>
+
+                <h3 className="text-2xl font-semibold text-foreground mt-8">Discover Trending Topics & Video Ideas</h3>
+                <p>
+                  Stay ahead of the curve with our trending topics finder and video ideas generator. Our AI analyzes YouTube trends in real-time to suggest content ideas 
+                  that are gaining traction in your niche. Create videos about trending topics before your competitors do, maximizing your growth potential and view counts.
+                </p>
+
+                <h3 className="text-2xl font-semibold text-foreground mt-8">Complete YouTube SEO Optimization Suite</h3>
+                <p>
+                  Beyond keyword research and tag generation, our comprehensive YouTube SEO tool includes title optimization, description generation, channel analysis, 
+                  and video performance tracking. All tools work together seamlessly to help you rank higher, get more views, and grow your subscriber count organically.
+                </p>
+
+                <h3 className="text-2xl font-semibold text-foreground mt-8">Why Choose Our Free YouTube SEO Tool?</h3>
+                <p>
+                  Unlike paid alternatives like vidIQ and TubeBuddy, our YouTube SEO tool is 100% free with no limitations. No credit card required, no hidden fees, 
+                  no premium upsells. Try all our features including keyword research, tag generator, trending topics, video ideas, title optimizer, and more - completely free forever. 
+                  We believe every creator deserves access to powerful SEO tools to succeed on YouTube.
+                </p>
+              </div>
+
+              <div className="mt-12 p-6 sm:p-8 bg-primary/5 border-2 border-primary/20 rounded-2xl">
+                <h3 className="text-2xl font-bold mb-4 text-center">Try It Free Today - No Login Required</h3>
+                <p className="text-center text-muted-foreground mb-6">
+                  Start using our YouTube SEO tool now. Get instant access to keyword research, tag generator, trending topics, 
+                  video ideas, and all optimization features. No account creation, no credit card - just free YouTube SEO tools that work.
+                </p>
+                <div className="flex justify-center">
+                  <Button size="lg" asChild className="text-base px-8 py-6">
+                    <Link href="/keyword-research">
+                      Start Keyword Research Free
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Reviews Section */}
-        <section className="border-t bg-muted/30 px-4 sm:px-6 py-16 sm:py-20 md:py-24">
+        <section className="border-t bg-background px-4 sm:px-6 py-16 sm:py-20 md:py-24">
           <div className="container mx-auto max-w-7xl">
             <div className="mb-12 sm:mb-16 text-center">
               <Badge className="mb-4" variant="secondary">
                 <Star className="mr-2 h-4 w-4 fill-current" />
-                Trusted by 50,000+ Creators
+                Trusted by 50,000+ YouTube Creators
               </Badge>
               <h2 className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
-                Real Results From Real Creators
+                Real Results From Real YouTube Creators
               </h2>
               <p className="mx-auto max-w-3xl text-base sm:text-lg md:text-xl text-muted-foreground px-4 leading-relaxed">
-                See how successful YouTubers are using our free SEO tools to grow their channels 
-                and get millions of views.
+                See how successful YouTubers are using our free SEO tools including keyword research, tag generator, and trending topics 
+                to grow their channels and get millions of views without spending a penny.
               </p>
             </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -469,14 +528,15 @@ export default function Home() {
           <div className="container mx-auto max-w-4xl text-center">
             <Badge className="mb-6" variant="secondary">
               <Sparkles className="mr-2 h-4 w-4" />
-              Start Growing Today
+              Start Growing Your YouTube Channel Today
             </Badge>
             <h2 className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
-              Ready to Rank Your Videos?
+              Ready to Rank Your YouTube Videos Faster?
             </h2>
             <p className="mb-8 sm:mb-10 text-base sm:text-lg md:text-xl text-muted-foreground px-4 leading-relaxed">
-              Join thousands of successful creators who are growing their channels with our free AI-powered tools. 
-              No credit card required. Start optimizing your content in seconds.
+              Join thousands of successful creators who are growing their channels with our free AI-powered YouTube SEO tools. 
+              Try keyword research, tag generator, trending topics, and video ideas - all completely free. No credit card required, no login needed. 
+              Start optimizing your content and ranking faster in seconds.
             </p>
             <div className="mb-10 flex flex-wrap justify-center gap-4 sm:gap-6 px-4">
               <div className="flex items-center gap-2">
@@ -491,10 +551,14 @@ export default function Home() {
                 <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
                 <span className="text-sm sm:text-base font-medium">AI-Powered Results</span>
               </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
+                <span className="text-sm sm:text-base font-medium">No Login Required</span>
+              </div>
             </div>
             <Button size="lg" asChild className="text-base px-8 py-6 shadow-lg hover:shadow-xl transition-all">
               <Link href="/keyword-research">
-                Start Optimizing Now
+                Try Keyword Research Free Now
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -508,11 +572,11 @@ export default function Home() {
               <div className="col-span-2 lg:col-span-1">
                 <h3 className="mb-4 text-lg font-bold">YouTube SEO Tool</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  The best free YouTube SEO tool for creators. Powered by AI to help you rank faster and grow your channel.
+                  The best free YouTube SEO tool for creators. Keyword research, tag generator, trending topics, and video ideas powered by AI to help you rank faster and grow your channel.
                 </p>
               </div>
               <div>
-                <h3 className="mb-4 font-semibold text-sm sm:text-base">Tools</h3>
+                <h3 className="mb-4 font-semibold text-sm sm:text-base">Free SEO Tools</h3>
                 <ul className="space-y-2.5 text-xs sm:text-sm text-muted-foreground">
                   <li><Link href="/keyword-research" className="hover:text-foreground transition-colors">Keyword Research</Link></li>
                   <li><Link href="/tag-generator" className="hover:text-foreground transition-colors">Tag Generator</Link></li>
@@ -521,10 +585,8 @@ export default function Home() {
                 </ul>
               </div>
               <div>
-                <h3 className="mb-4 font-semibold text-sm sm:text-base">Analytics</h3>
+                <h3 className="mb-4 font-semibold text-sm sm:text-base">Growth Tools</h3>
                 <ul className="space-y-2.5 text-xs sm:text-sm text-muted-foreground">
-                  <li><Link href="/channel-analyzer" className="hover:text-foreground transition-colors">Channel Analyzer</Link></li>
-                  <li><Link href="/video-analyzer" className="hover:text-foreground transition-colors">Video Analyzer</Link></li>
                   <li><Link href="/trending-topics" className="hover:text-foreground transition-colors">Trending Topics</Link></li>
                   <li><Link href="/video-ideas" className="hover:text-foreground transition-colors">Video Ideas</Link></li>
                 </ul>
@@ -532,13 +594,13 @@ export default function Home() {
               <div>
                 <h3 className="mb-4 font-semibold text-sm sm:text-base">Resources</h3>
                 <ul className="space-y-2.5 text-xs sm:text-sm text-muted-foreground">
-                  <li><Link href="/blog" className="hover:text-foreground transition-colors">Blog</Link></li>
+                  <li><Link href="/blog" className="hover:text-foreground transition-colors">YouTube SEO Blog</Link></li>
                   <li><Link href="/dashboard" className="hover:text-foreground transition-colors">Dashboard</Link></li>
                 </ul>
               </div>
             </div>
             <div className="border-t pt-8 text-center text-xs sm:text-sm text-muted-foreground">
-              <p>&copy; {new Date().getFullYear()} YouTube SEO Tool. All rights reserved. Built with ❤️ for creators.</p>
+              <p>&copy; {new Date().getFullYear()} YouTube SEO Tool. All rights reserved. Free keyword research, tag generator, trending topics & video ideas for YouTube creators.</p>
             </div>
           </div>
         </footer>
