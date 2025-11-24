@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { MessageCircle, X, Send, Sparkles, Loader2, Bot, User } from "lucide-react"
+import { MessageCircle, X, Send, Sparkles, Loader2, Bot, User, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -144,6 +144,15 @@ export function Chatbot() {
               <div className="relative overflow-hidden border-b bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 p-4">
                 <div className="relative z-10 flex items-center justify-between">
                   <div className="flex items-center gap-3">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => setIsOpen(false)}
+                      className="text-white hover:bg-white/20 -ml-2"
+                      title="Back"
+                    >
+                      <ArrowLeft className="h-5 w-5" />
+                    </Button>
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
                       <Sparkles className="h-5 w-5 text-white" />
                     </div>
@@ -157,6 +166,7 @@ export function Chatbot() {
                     size="icon"
                     onClick={() => setIsOpen(false)}
                     className="text-white hover:bg-white/20"
+                    title="Close"
                   >
                     <X className="h-5 w-5" />
                   </Button>
