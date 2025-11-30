@@ -20,7 +20,7 @@ const blogArticles = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Use environment variable or fallback
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://your-domain.com';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://youtubeseo.app';
   const currentDate = new Date().toISOString();
 
   // Main pages
