@@ -185,7 +185,7 @@ export default function Home() {
       <OrganizationStructuredData />
       <SoftwareAppStructuredData 
         name="YouTube SEO Tool"
-        description="Free AI-powered YouTube SEO tool with keyword research, tag generator, trending topics, and video ideas to help creators rank faster and grow their channels."
+        description="Free AI-powered YouTube SEO tool with keyword research, tag generator, trending topics, and video ideas to help creators rank faster and grow their YouTube channels. The best free alternative to vidIQ and TubeBuddy."
         url="https://youtubeseo.app"
       />
       <BreadcrumbStructuredData 
@@ -240,11 +240,11 @@ export default function Home() {
                 Free YouTube SEO Tool - Try It Free, No Login Required
               </Badge>
               <h1 className="mb-6 sm:mb-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight px-2">
-                Free YouTube SEO Tool: Keyword Research, Tag Generator & Video Ideas
+                Free YouTube SEO Tool: Boost Your Rankings with AI Keyword Research, Tag Generator & Video Ideas
               </h1>
               <p className="mx-auto mb-8 sm:mb-10 max-w-3xl text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground px-4 leading-relaxed">
-                Try it free! AI-powered YouTube SEO tool with keyword research, tag generator, trending topics finder, and video ideas. 
-                Rank faster with our free title optimizer, description generator, and channel analyzer. The best vidIQ alternative for 2024.
+                Try our free AI-powered YouTube SEO tool to rank higher. Get instant access to a top-tier keyword research tool, tag generator, trending topics finder, and video ideas.
+                Rank faster with our free title optimizer, description generator, and channel analyzer. The best vidIQ and TubeBuddy alternative for 2024.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4 mb-12">
                 <Button size="lg" asChild className="w-full sm:w-auto text-base px-8 py-6 shadow-lg hover:shadow-xl transition-all">
@@ -311,11 +311,11 @@ export default function Home() {
                 Why Choose Our YouTube SEO Tool
               </Badge>
               <h2 className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
-                The Best Free vidIQ Alternative for YouTube Growth
+                The Best Free vidIQ and TubeBuddy Alternative for YouTube SEO
               </h2>
               <p className="mx-auto max-w-3xl text-base sm:text-lg md:text-xl text-muted-foreground px-4 leading-relaxed">
-                Powerful AI-driven keyword research, tag generator, and trending topics insights combined with comprehensive video analytics. 
-                Everything you need to rank your YouTube videos faster and grow your channel organically - completely free, no login required.
+                Unlock powerful AI-driven keyword research, a high-performance tag generator, and trending topics insights. Our tool provides comprehensive video analytics
+                so you can rank your YouTube videos faster and grow your channel organically. It's completely free, and no login is required.
               </p>
             </div>
             <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -353,11 +353,11 @@ export default function Home() {
                 All-in-One YouTube SEO Solution
               </Badge>
               <h2 className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
-                Complete Free YouTube SEO Toolkit: Try All Tools Free
+                Your All-in-One YouTube SEO Toolkit: Try All Our Tools for Free
               </h2>
               <p className="mx-auto max-w-3xl text-base sm:text-lg md:text-xl text-muted-foreground px-4 leading-relaxed">
-                From keyword research and tag generator to trending topics and video ideas, we've got every free tool you need 
-                to optimize your YouTube content and dominate search rankings. No credit card, no login - just try it free now.
+                From our AI-powered keyword research and tag generator to our trending topics finder and video ideas generator, we have every free tool you need
+                to optimize your YouTube content and dominate search rankings. No credit card and no login required—just free, powerful SEO tools.
               </p>
             </div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
