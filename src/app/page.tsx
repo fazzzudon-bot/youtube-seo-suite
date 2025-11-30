@@ -185,7 +185,7 @@ export default function Home() {
       <OrganizationStructuredData />
       <SoftwareAppStructuredData 
         name="YouTube SEO Tool"
-        description="Free AI-powered YouTube SEO tool with keyword research, tag generator, trending topics, and video ideas to help creators rank faster and grow their channels."
+        description="Free AI-powered YouTube SEO tool with keyword research, tag generator, trending topics, and video ideas to help creators rank faster and grow their YouTube channels. The best free alternative to vidIQ and TubeBuddy."
         url="https://youtubeseo.app"
       />
       <BreadcrumbStructuredData 
@@ -239,25 +239,29 @@ export default function Home() {
                 <Sparkles className="mr-2 h-4 w-4" />
                 Free YouTube SEO Tool - Try It Free, No Login Required
               </Badge>
-              <h1 className="mb-6 sm:mb-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight px-2">
-                Free YouTube SEO Tool: Keyword Research, Tag Generator & Video Ideas
+              <h1 className="mb-6 sm:mb-8 text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight px-2">
+                Free YouTube SEO Tool: Boost Your Rankings with AI Keyword Research, Tag Generator & Video Ideas
               </h1>
               <p className="mx-auto mb-8 sm:mb-10 max-w-3xl text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground px-4 leading-relaxed">
-                Try it free! AI-powered YouTube SEO tool with keyword research, tag generator, trending topics finder, and video ideas. 
-                Rank faster with our free title optimizer, description generator, and channel analyzer. The best vidIQ alternative for 2024.
+                Try our free AI-powered YouTube SEO tool to rank higher. Get instant access to a top-tier keyword research tool, tag generator, trending topics finder, and video ideas.
+                Rank faster with our free title optimizer, description generator, and channel analyzer. The best vidIQ and TubeBuddy alternative for 2024.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4 mb-12">
-                <Button size="lg" asChild className="w-full sm:w-auto text-base px-8 py-6 shadow-lg hover:shadow-xl transition-all">
-                  <Link href="/keyword-research">
-                    Try Keyword Research Free
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-                <Button size="lg" variant="outline" asChild className="w-full sm:w-auto text-base px-8 py-6">
-                  <Link href="#tools">
-                    View All Free Tools
-                  </Link>
-                </Button>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button size="lg" asChild className="w-full sm:w-auto text-base px-8 py-6 shadow-lg hover:shadow-xl transition-all">
+                    <Link href="/keyword-research">
+                      Try Keyword Research Free
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button size="lg" variant="outline" asChild className="w-full sm:w-auto text-base px-8 py-6">
+                    <Link href="#tools">
+                      View All Free Tools
+                    </Link>
+                  </Button>
+                </motion.div>
               </div>
 
               {/* Trust Signals */}
@@ -282,7 +286,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-16 sm:mt-20 grid grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:grid-cols-4"
+              className="mt-16 sm:mt-20 grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-4"
             >
               {stats.map((stat, index) => (
                 <motion.div
@@ -311,11 +315,11 @@ export default function Home() {
                 Why Choose Our YouTube SEO Tool
               </Badge>
               <h2 className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
-                The Best Free vidIQ Alternative for YouTube Growth
+                The Best Free vidIQ and TubeBuddy Alternative for YouTube SEO
               </h2>
               <p className="mx-auto max-w-3xl text-base sm:text-lg md:text-xl text-muted-foreground px-4 leading-relaxed">
-                Powerful AI-driven keyword research, tag generator, and trending topics insights combined with comprehensive video analytics. 
-                Everything you need to rank your YouTube videos faster and grow your channel organically - completely free, no login required.
+                Unlock powerful AI-driven keyword research, a high-performance tag generator, and trending topics insights. Our tool provides comprehensive video analytics
+                so you can rank your YouTube videos faster and grow your channel organically. It's completely free, and no login is required.
               </p>
             </div>
             <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -326,10 +330,11 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
+                  whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
                 >
                   <Card className="h-full hover:shadow-lg transition-all border-2 hover:border-primary/20">
                     <CardHeader>
-                      <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                      <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
                         <feature.icon className="h-7 w-7" />
                       </div>
                       <CardTitle className="text-xl sm:text-2xl">{feature.title}</CardTitle>
@@ -353,11 +358,11 @@ export default function Home() {
                 All-in-One YouTube SEO Solution
               </Badge>
               <h2 className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
-                Complete Free YouTube SEO Toolkit: Try All Tools Free
+                Your All-in-One YouTube SEO Toolkit: Try All Our Tools for Free
               </h2>
               <p className="mx-auto max-w-3xl text-base sm:text-lg md:text-xl text-muted-foreground px-4 leading-relaxed">
-                From keyword research and tag generator to trending topics and video ideas, we've got every free tool you need 
-                to optimize your YouTube content and dominate search rankings. No credit card, no login - just try it free now.
+                From our AI-powered keyword research and tag generator to our trending topics finder and video ideas generator, we have every free tool you need
+                to optimize your YouTube content and dominate search rankings. No credit card and no login required—just free, powerful SEO tools.
               </p>
             </div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -476,6 +481,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
+                  whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
                 >
                   <Card className="h-full hover:shadow-lg transition-all">
                     <CardHeader>
@@ -568,8 +574,8 @@ export default function Home() {
         {/* Footer */}
         <footer className="border-t px-4 sm:px-6 py-12 sm:py-16">
           <div className="container mx-auto max-w-7xl">
-            <div className="grid gap-8 sm:gap-10 grid-cols-2 lg:grid-cols-4 mb-10">
-              <div className="col-span-2 lg:col-span-1">
+            <div className="grid gap-8 sm:gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-10">
+              <div className="col-span-1 lg:col-span-1">
                 <h3 className="mb-4 text-lg font-bold">YouTube SEO Tool</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   The best free YouTube SEO tool for creators. Keyword research, tag generator, trending topics, and video ideas powered by AI to help you rank faster and grow your channel.
