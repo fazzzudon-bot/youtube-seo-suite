@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     default: "Best YouTube SEO Tool for Keywords, Tags & Video Ranking",
     template: "%s | YouTube SEO Tool"
   },
-  description: "AI-Powered YouTube SEO Tool to grow your channel faster. Free keyword research, tag generator, title optimizer, and video analyzer. Built by creators, for creators.",
+  description: "Boost your YouTube channel's growth with our AI-powered SEO tool. Get free, top-tier keyword research, a powerful tag generator, a viral title optimizer, and in-depth video analysis. Designed by successful creators to help you rank higher and faster.",
   keywords: [
     'youtube seo tools',
     'free youtube tag generator',
@@ -28,7 +28,12 @@ export const metadata: Metadata = {
     'youtube analytics tool',
     'youtube growth tool',
     'video optimization tool',
-    'youtube ranking tool'
+    'youtube ranking tool',
+    'seo for youtube',
+    'youtube keyword tool',
+    'youtube tag finder',
+    'video seo',
+    'youtube creator tools'
   ],
   authors: [{ name: 'YouTube SEO Tool Team' }],
   creator: 'YouTube SEO Tool',
