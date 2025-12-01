@@ -9,26 +9,33 @@ import { Chatbot } from "@/components/chatbot";
 export const metadata: Metadata = {
   metadataBase: new URL('https://youtubeseo.app'),
   title: {
-    default: "Best YouTube SEO Tool for Keywords, Tags & Video Ranking",
+    default: "Free YouTube SEO Tool - Keyword Research, Tag Generator, Video Ideas & Trending Topics",
     template: "%s | YouTube SEO Tool"
   },
-  description: "AI-Powered YouTube SEO Tool to grow your channel faster. Free keyword research, tag generator, title optimizer, and video analyzer. Built by creators, for creators.",
+  description: "Try it free! AI-powered YouTube SEO tool with keyword research, tag generator, trending topics finder, and video ideas. Rank faster with our free title optimizer and description generator.",
   keywords: [
-    'youtube seo tools',
+    'youtube seo tool',
+    'youtube seo',
+    'seo tool',
     'free youtube tag generator',
+    'tag generator',
     'youtube keyword research',
+    'keyword research',
+    'trending topics',
+    'video ideas',
     'youtube seo score checker',
     'ai title generator',
     'youtube description generator',
     'trending youtube video ideas',
-    'channel analyzer',
     'rank youtube videos fast',
     'vidIQ alternative',
     'best youtube seo tool',
     'youtube analytics tool',
     'youtube growth tool',
     'video optimization tool',
-    'youtube ranking tool'
+    'youtube ranking tool',
+    'try it free',
+    'free youtube tools'
   ],
   authors: [{ name: 'YouTube SEO Tool Team' }],
   creator: 'YouTube SEO Tool',
@@ -43,21 +50,21 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://youtubeseo.app',
     siteName: 'YouTube SEO Tool',
-    title: 'Best YouTube SEO Tool for Keywords, Tags & Video Ranking',
-    description: 'AI-Powered YouTube SEO Tool to grow your channel faster. Free keyword research, tag generator, title optimizer, and video analyzer.',
+    title: 'Free YouTube SEO Tool - Keyword Research, Tag Generator, Video Ideas & Trending Topics',
+    description: 'Try it free! AI-powered YouTube SEO tool with keyword research, tag generator, trending topics finder, and video ideas. Rank faster with our free optimization tools.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'YouTube SEO Tool - AI-Powered Growth Platform'
+        alt: 'YouTube SEO Tool - Free AI-Powered Keyword Research & Tag Generator'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Best YouTube SEO Tool for Keywords, Tags & Video Ranking',
-    description: 'AI-Powered YouTube SEO Tool to grow your channel faster.',
+    title: 'Free YouTube SEO Tool - Keyword Research, Tag Generator & Video Ideas',
+    description: 'Try it free! AI-powered keyword research, tag generator, trending topics, and video ideas to rank your YouTube videos faster.',
     images: ['/og-image.jpg'],
     creator: '@youtubeseotool'
   },
@@ -79,7 +86,7 @@ export const metadata: Metadata = {
   category: 'Technology',
   classification: 'YouTube SEO Tools',
   verification: {
-    google: 'sy4s2Krs1RV4xdlz396D_Pn7lI2EJla46xBQKQ58lhU'
+    google: 'HSByG_UFa-tIkTg4Ccfl6dESrWHicd1IHxgJQVchHoc'
   }
 };
 
@@ -88,9 +95,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-XXXXXXXXXX';
+  const FB_PIXEL_ID = process.env.NEXT_PUBLIC_FB_PIXEL_ID;
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Canonical URL - Critical for SEO */}
+        <link rel="canonical" href="https://youtubeseo.app" />
+        
         {/* Additional SEO Meta Tags */}
         <meta name="language" content="English" />
         <meta name="revisit-after" content="7 days" />
@@ -98,9 +111,12 @@ export default function RootLayout({
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="theme-color" content="#6366f1" />
         
-        {/* Preconnect to important domains */}
+        {/* Preconnect to important domains for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         
         {/* Web Application Manifest */}
         <link rel="manifest" href="/manifest.json" />
@@ -113,10 +129,10 @@ export default function RootLayout({
         <ThemeProvider defaultTheme="system" storageKey="yt-seo-theme">
           <ErrorReporter />
           
-          {/* Google Analytics - Replace with your actual GA ID */}
+          {/* Google Analytics 4 */}
           <Script
             strategy="afterInteractive"
-            src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           />
           <Script
             id="google-analytics"
@@ -126,12 +142,47 @@ export default function RootLayout({
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', 'G-XXXXXXXXXX', {
+                gtag('config', '${GA_MEASUREMENT_ID}', {
                   page_path: window.location.pathname,
+                  send_page_view: true,
+                  anonymize_ip: true
                 });
               `,
             }}
           />
+
+          {/* Facebook Pixel (Optional) */}
+          {FB_PIXEL_ID && (
+            <>
+              <Script
+                id="facebook-pixel"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                  __html: `
+                    !function(f,b,e,v,n,t,s)
+                    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                    n.queue=[];t=b.createElement(e);t.async=!0;
+                    t.src=v;s=b.getElementsByTagName(e)[0];
+                    s.parentNode.insertBefore(t,s)}(window, document,'script',
+                    'https://connect.facebook.net/en_US/fbevents.js');
+                    fbq('init', '${FB_PIXEL_ID}');
+                    fbq('track', 'PageView');
+                  `,
+                }}
+              />
+              <noscript>
+                <img
+                  height="1"
+                  width="1"
+                  style={{ display: 'none' }}
+                  src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
+                  alt=""
+                />
+              </noscript>
+            </>
+          )}
           
           <Script
             src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/scripts//route-messenger.js"
